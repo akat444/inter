@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interpretes - Nuevo Dial Out</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            text-align: center;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            width: 400px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-container {
+            display: none;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .form-container input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .form-container label {
+            display: block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .form-container button {
+            background-color: #28a745;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .form-container button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button id="openFormBtn">Nuevo Dial Out</button>
+        <div class="form-container" id="formContainer">
+            <label for="patientName">Nombre del Paciente:</label>
+            <input type="text" id="patientName" placeholder="Nombre del Paciente">
+            
+            <label for="phoneNumber">Número de Teléfono:</label>
+            <input type="text" id="phoneNumber" placeholder="Número de Teléfono">
+            
+            <label for="voicemailNumber">Número de Correo de Voz:</label>
+            <input type="text" id="voicemailNumber" placeholder="Número de Correo de Voz">
+            
+            <button id="submitBtn">Guardar</button>
+        </div>
+    </div>
+
+    <script>
+        const openFormBtn = document.getElementById('openFormBtn');
+        const formContainer = document.getElementById('formContainer');
+        const submitBtn = document.getElementById('submitBtn');
+
+        openFormBtn.addEventListener('click', () => {
+            formContainer.style.display = formContainer.style.display === 'none' || formContainer.style.display === '' ? 'block' : 'none';
+        });
+
+        submitBtn.addEventListener('click', () => {
+            const patientName = document.getElementById('patientName').value;
+            const phoneNumber = document.getElementById('phoneNumber').value;
+            const voicemailNumber = document.getElementById('voicemailNumber').value;
+
+            if (patientName && phoneNumber && voicemailNumber) {
+                alert(`Paciente: ${patientName}\nTeléfono: ${phoneNumber}\nCorreo de Voz: ${voicemailNumber}`);
+                formContainer.style.display = 'none';
+            } else {
+                alert('Por favor, complete todos los campos.');
+            }
+        });
+    </script>
+</body>
+</html>
